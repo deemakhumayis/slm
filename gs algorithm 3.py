@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import numpy as np
 from scipy import fftpack
 from scipy import signal
@@ -77,8 +77,7 @@ def gs_alg(target_intensity, iterations):
         fft_A = fft2(A)
         
         I_final, phi = comp_to_int_phi(fft_A)
-
-        print get_error(I_final, img2)
+        print(get_error(I_final, img2))
         
         
         A = int_phi_to_comp(img2,phi)
@@ -107,7 +106,7 @@ def scale_image(img, scaling_factor):
 def load_image(filename):
     
     #importing image
-    img = plt.imread(filename)
+    img = mpimg.imread(filename)
     img=np.mean(img,2)
     #plt.figure()
     plt.imshow(img)
@@ -162,11 +161,11 @@ def center_slice(A, shape):
     
 def center_slice_testbench():
     a = np.array([[1,2,6],[3,4,5]])
-    print a
+    print (a)
 
-    print pad_square(a)
+    print (pad_square(a))
 
-    print center_slice(pad_square(a),np.shape(a))
+    print (center_slice(pad_square(a),np.shape(a)))
     
     
 
@@ -188,6 +187,3 @@ if __name__ == '__main__':
 
 
     np.save('gs algorithm 2',phi)
-
-
-
